@@ -28,16 +28,31 @@ module.exports = {
 
     },
     addPlayer: (req, res) => {
-        const index = allPlayers [allPlayers.length-1].id+1
+        const index = allPlayers [allPlayers.length-1].index+1
 
         const newPlayer = {
-            name: req.name,
-            body: req.body.text,
-            team: req.team,
+            name: req.body.name,
+            body: req.body.body,
+            team: req.body.team,
             index: index
         };
 
         allPlayers.push(newPlayer)
         res.status(200).send(allPlayers)
-    }
+    },
+    updatePlayer: (req, res) => {
+        let { index } = req.params;
+        let { text } = req.body;
+      
+        let object = allPlayers.find((element) => {
+         return element.index === +index;
+        })
+      
+        object.body = text;
+      
+        res.status(200).send(allPlayers);
+       }
+    // deletePLayer:(req, res) => {
+
+    // }
 }
