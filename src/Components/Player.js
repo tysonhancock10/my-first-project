@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Input from './Input'
 import Styling from './Styling.css'
-import Delete from './delete.js'
+
+
 class Player extends Component {
     constructor() {
         super()
@@ -15,12 +16,13 @@ class Player extends Component {
 
         }
         this.handleUpdate= this.handleUpdate.bind(this)
+        this.handleDelete= this.handleDelete.bind(this)
     }
 
     handleGetPlayer() {
         axios.get('/api/soccer')
             .then(response => {
-                console.log(response)
+                
                 this.setState({
                     players: response.data
                 })
@@ -55,7 +57,7 @@ class Player extends Component {
 
         axios.post('/api/soccer', bodyObj)
             .then(response => {
-                console.log(response)
+                
                 this.setState({
                     players: response.data
                 })
@@ -68,7 +70,13 @@ class Player extends Component {
         })
     }
     handleUpdate(data) {
-        console.log(data)
+        
+        this.setState({
+            players: data
+        })
+    }
+    handleDelete(data) {
+            console.log(data)
         this.setState({
             players: data
         })
@@ -90,17 +98,19 @@ class Player extends Component {
 
     render() {
         const favePlayers = this.state.players.map((player) => 
-            <div>
-                <div class="text">
+            <div className="everything">
+                <div className="text">
                 <h4>{player.name}</h4>
                 <h5>{player.team}</h5>
                 <p>{player.body}</p>
-                <p class="number" >{player.index}</p>
+                <p className="number" >{player.index}</p>
                 
                 <Input 
                 updatePlayer={this.handleUpdate}
+                deletePlayer={this.handleDelete}
                 id={player.index}
           />
+          
           
                 </div>
             </div>
@@ -129,10 +139,10 @@ class Player extends Component {
                 </input>
             
 
-                <button class="getplayers" onClick={() => { this.handleGetPlayer() }}>Get Players</button>
-                <button class="addplayers" onClick={() => { this.handleAddPlayer() }}>Add Players</button>
-                <img class="soccerplayer" src="https://www.theglobeandmail.com/resizer/r-5cN0JPJEiUbhTXvwfZoUw7HtI=/620x0/filters:quality(80)/arc-anglerfish-tgam-prod-tgam.s3.amazonaws.com/public/RA6HWRZHG5L5DHSB2VEXMRTWBE.jpg"></img>
-                <img class="ronaldo" src="https://ronaldo.com/wp-content/uploads/2018/08/Ronnie-Juve-696x452.jpg"></img>
+                <button className="getplayers" onClick={() => { this.handleGetPlayer() }}>Get Players</button>
+                <button className="addplayers" onClick={() => { this.handleAddPlayer() }}>Add Players</button>
+                <img alt="" className="soccerplayer" src="https://www.theglobeandmail.com/resizer/r-5cN0JPJEiUbhTXvwfZoUw7HtI=/620x0/filters:quality(80)/arc-anglerfish-tgam-prod-tgam.s3.amazonaws.com/public/RA6HWRZHG5L5DHSB2VEXMRTWBE.jpg"></img>
+                <img alt="" className="ronaldo" src="https://ronaldo.com/wp-content/uploads/2018/08/Ronnie-Juve-696x452.jpg"></img>
                 
                 {favePlayers}
             </div>

@@ -23,7 +23,7 @@ let allPlayers = [
 
 module.exports = {
     getPlayer: (req, res) => {
-        console.log(allPlayers) 
+         
         res.status(200).send(allPlayers)
 
     },
@@ -47,18 +47,25 @@ module.exports = {
         let UpdatedPlayers = allPlayers.find((element) => {
          return element.index === +index;
         })
-      console.log(req.body)
+      
         UpdatedPlayers.body = text;
       
         res.status(200).send(allPlayers);
        },
-    deletePLayer:(req, res) => {
+    deletePlayer:(req, res) => {
         let { index } = req.params;
-
-         allPlayers.map((element) =>
+        console.log(req.params)
+        
+      
+        let deletedPlayers = allPlayers.map((elem) =>
         {
-            return allPlayers.delete(element)
-        })
+            allPlayers.splice(elem,1)
+            return( allPlayers
+            )
+        }) 
+    
+       
+
         res.status(200).send(allPlayers)
     }
 }

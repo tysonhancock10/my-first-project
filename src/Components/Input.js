@@ -24,22 +24,29 @@ class Input extends React.Component {
     }
     console.log(text)
     axios.put(`/api/soccer/${id}`, text).then((response) => {
-      console.log(id)
+
       this.props.updatePlayer(response.data);
       this.handleClick();
     }).catch(error => console.log(error))
   }
-  handleDelete(id) {
-    axios.delete(`/api/soccer/${id}`)
-      .then((response) => {
-        this.props.deletePlayer(response.data);
-      })
-      .catch(error => console.log(error))
+
+
+  handleDelete() {
+
+    axios.delete(`/api/soccer/`)
+    .then((response) => {
+      console.log(response)
+
+      this.props.deletePlayer(response.data);
+      this.handleClick();
+    }).catch(error => console.log(error))
   }
+
+
   render() {
     return (
       <div>
-        <button onClick={() => this.handleDelete(this.props.id)}>Delete</button>
+
         {
           !this.state.editItem ?
             <button onClick={() => this.handleClick()}>Edit</button> :
@@ -49,7 +56,7 @@ class Input extends React.Component {
                 value={this.state.name}
               />
               <button onClick={() => this.handleUpdate(this.props.id)}>Submit</button>
-
+              <button onClick={() => this.handleDelete(this.props.id)}>Delete</button>
             </div>
         }
       </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Player from './Components/Player'
 import Styles from './Styles.css'
+import Title from './Title.js'
 
 
 
@@ -10,7 +11,7 @@ class App extends Component {
     constructor(){
       super()
       this.state = {
-      input:[]
+      input:"Favorite Soccer Players!"
       }
     }
 
@@ -18,7 +19,7 @@ class App extends Component {
       
       return(
         <div>
-          <h1>Favorite Soccer Players!</h1>
+          <Title />
           <Player />
         </div>
       )
