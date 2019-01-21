@@ -53,16 +53,15 @@ module.exports = {
         res.status(200).send(allPlayers);
        },
     deletePlayer:(req, res) => {
-        let { index } = req.params;
+        
         console.log(req.params)
         
-      
-        let deletedPlayers = allPlayers.map((elem) =>
-        {
-            allPlayers.splice(elem,1)
-            return( allPlayers
-            )
-        }) 
+        let {id} = req.params.index
+        
+            allPlayers.splice(id,1)
+            
+            
+         
     
        
 

@@ -31,9 +31,9 @@ class Input extends React.Component {
   }
 
 
-  handleDelete() {
+  handleDelete(id) {
 
-    axios.delete(`/api/soccer/`)
+    axios.delete(`/api/soccer/${id}`)
     .then((response) => {
       console.log(response)
 
