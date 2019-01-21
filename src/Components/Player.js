@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Input from './Input'
+import Styling from './Styling.css'
+import Delete from './delete.js'
 class Player extends Component {
     constructor() {
         super()
@@ -66,21 +68,25 @@ class Player extends Component {
         })
     }
     handleUpdatePlayer(data) {
+        console.log(data)
         this.setState({
             players: data
         })
     }
 
 
-    handleDeletePlayer(player, id) {
-        axios.delete(`/api/soccer${id}`)
-            .then((response) => {
-                this.setState({
-                    players: response.data
-                })
-            })
-    }
-   
+    // handleDeletePlayer(id) {
+    //     axios.delete(`/api/soccer${id}`)
+    //         .then((response) => {
+    //             this.setState({
+    //                 players: response.data
+    //             })
+    //             .catch((error) => {
+    //                 console.log(error)
+    //             })
+    //         })
+    // }
+  
 
     render() {
         const favePlayers = this.state.players.map((player) => 
@@ -88,11 +94,14 @@ class Player extends Component {
                 <h4>{player.name}</h4>
                 <h5>{player.team}</h5>
                 <p>{player.body}</p>
-                <p>{player.index}</p>
+                <p class="number" >{player.index}</p>
+                
                 <Input 
                 updatePlayer={this.handleUpdate}
-                id={player.id}
+                id={player.index}
           />
+          <Delete
+                />
             </div>
         )
       
@@ -109,24 +118,20 @@ class Player extends Component {
                     this.handleBodyInput(e.target.value)
                 }}
                     value={this.state.bodyInput}
-                    placeholder={'What Team?'}>
+                    placeholder={'Why are they great?'}>
                 </input>
                 <input onChange={(e) => {
                     this.handleTeamInput(e.target.value)
                 }}
                     value={this.state.teamInput}
-                    placeholder={'Why are they great?'}>
+                    placeholder={'What team?'}>
                 </input>
-                <input onChange={(e) => {
-                    this.handleUpdatePlayer(e.target.value)
-                }} value={this.state.players}
-                    placeholder={'update me'}>
-                </input>
-                
             
 
-                <button onClick={() => { this.handleGetPlayer() }}>Get Players</button>
-                <button onClick={() => { this.handleAddPlayer() }}>Add Players</button>
+                <button class="getplayers" onClick={() => { this.handleGetPlayer() }}>Get Players</button>
+                <button class="addplayers" onClick={() => { this.handleAddPlayer() }}>Add Players</button>
+                <img class="soccerplayer" src="https://www.theglobeandmail.com/resizer/r-5cN0JPJEiUbhTXvwfZoUw7HtI=/620x0/filters:quality(80)/arc-anglerfish-tgam-prod-tgam.s3.amazonaws.com/public/RA6HWRZHG5L5DHSB2VEXMRTWBE.jpg"></img>
+                <img class="ronaldo" src="https://ronaldo.com/wp-content/uploads/2018/08/Ronnie-Juve-696x452.jpg"></img>
                 
                 {favePlayers}
             </div>

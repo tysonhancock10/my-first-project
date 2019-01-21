@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Inputstyle from './Inputstyle.css'
 
 class Input extends React.Component {
  constructor() {
@@ -22,6 +23,7 @@ class Input extends React.Component {
    text: this.state.name
   }
   axios.put(`/api/soccer/${id}`, text).then((response) => {
+      console.log(id)
     this.props.updatePlayer(response.data);
     this.handleClick();
   }).catch(error => console.log(error)) 
@@ -33,7 +35,7 @@ class Input extends React.Component {
      !this.state.editItem ?
     <button onClick={() => this.handleClick()}>Edit</button> :
     <div>
-     <input 
+     <input class="submitbox"
       onChange = {(e) => this.handleChange(e.target.value)}
       value={this.state.name}
      />

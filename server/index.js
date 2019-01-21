@@ -7,7 +7,7 @@ app.use(bodyParser.json())
 
 app.get('/api/soccer', cr.getPlayer)
 app.post('/api/soccer', cr.addPlayer)
-app.put('/api/soccer/:id', cr.updatePlayer)
-// app.put('/api/soccer', cr.updatePLayer)
-// app.delete('/api/soccer', cr.deletePLayer)
+app.put(`/api/soccer/:id`, cr.updatePlayer)
+app.delete(`/api/soccer:id`, cr.deletePLayer)
+
  app.listen(4000, () => console.log('The name is port... port 4000'))

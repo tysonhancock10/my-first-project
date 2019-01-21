@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Player from './Components/Player'
-import axios from 'axios';
+import Styles from './Styles.css'
 
 
 

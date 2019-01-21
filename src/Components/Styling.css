@@ -1,0 +1,87 @@
+button {
+    
+    background-color: rgb(51, 221, 233);
+    display:flex;
+    justify-content: center;
+    width: 20%;
+    margin: 5px;
+    font-weight: bold;
+    margin-left: 50px;
+    
+}
+
+input {
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    margin-left: 480px;
+
+}
+
+h4{
+    margin: 5px;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+}
+h5{
+    margin: 5px;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+    
+}
+
+p {
+    margin: 10px;
+    width: 20%;
+    text-emphasis: wrap;
+    text-align: center;
+    margin-left: 50px;
+}
+.number{
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    margin-left: 50px;
+}
+.getplayers{
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    width: 20%; 
+    margin-left:480px;
+
+}
+.addplayers{
+    width: 20%;
+    margin: 5px;
+    display:flex;
+    justify-content: center;
+    margin-left: 480px;
+    
+
+}
+.soccerplayer{
+    width: 30vw;
+    height: 30vh;
+    display: flex;
+    justify-content: flex-end;
+
+    margin: 20px;
+    margin-left: 600px;
+    position: absolute;
+}
+.ronaldo{
+    width: 30vw;
+    height: 30vh;
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+    margin-left:400px;
+    position: absolute;
+    margin-top: 255px;
+}

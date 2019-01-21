@@ -1,21 +1,21 @@
 let allPlayers = [
     {
         name: 'Lionel Messi',
-        team: 'Unknown',
+        team: 'FC Barcelona',
         body: ' Because of his great success, Messi rates higher than most players',
-        index: 0
-    },
-    {
-        name: 'Ronaldinho',
-        team: 'Unknown',
-        body: 'Because of his legendary plays and his status among players Ronaldinho is among the very highest of ratings.',
         index: 1
     },
     {
-        name: 'Christiano Ronaldo',
-        team: 'Unknown',
-        body: 'He is obviously one of my favorite players. Not sure what else to say.',
+        name: 'Ronaldinho',
+        team: 'Fluminense',
+        body: 'Because of his legendary plays and his status among players Ronaldinho is among the very highest of ratings.',
         index: 2
+    },
+    {
+        name: 'Christiano Ronaldo',
+        team: 'Juventus F.C.',
+        body: 'He is obviously one of my favorite players. Not sure what else to say.',
+        index: 3
     },
 ]
 
@@ -41,18 +41,24 @@ module.exports = {
         res.status(200).send(allPlayers)
     },
     updatePlayer: (req, res) => {
-        let { index } = req.params;
+        let { id } = req.params;
         let { text } = req.body;
       
-        let object = allPlayers.find((element) => {
-         return element.index === +index;
+        let UpdatedPlayers = allPlayers.find((element) => {
+         return element.id === +id;
         })
       
-        object.body = text;
+        UpdatedPlayers.body = text;
       
         res.status(200).send(allPlayers);
-       }
-    // deletePLayer:(req, res) => {
+       },
+    deletePLayer:(req, res) => {
+        let { id } = req.params;
 
-    // }
+        let DeletedPlayers = allPlayers.map((element) =>
+        {
+            return allPlayers.splice(element.id,1)
+        })
+        res.status(200).send(allPlayers)
+    }
 }

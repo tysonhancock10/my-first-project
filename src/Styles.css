@@ -1,0 +1,7 @@
+h1 {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    color:seashell;
+    background-color: skyblue
+}
