@@ -41,23 +41,23 @@ module.exports = {
         res.status(200).send(allPlayers)
     },
     updatePlayer: (req, res) => {
-        let { id } = req.params;
+        let { index } = req.params;
         let { text } = req.body;
       
         let UpdatedPlayers = allPlayers.find((element) => {
-         return element.id === +id;
+         return element.index === +index;
         })
-      
+      console.log(req.body)
         UpdatedPlayers.body = text;
       
         res.status(200).send(allPlayers);
        },
     deletePLayer:(req, res) => {
-        let { id } = req.params;
+        let { index } = req.params;
 
-        let DeletedPlayers = allPlayers.map((element) =>
+         allPlayers.map((element) =>
         {
-            return allPlayers.splice(element.id,1)
+            return allPlayers.delete(element)
         })
         res.status(200).send(allPlayers)
     }

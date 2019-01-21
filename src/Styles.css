@@ -2,6 +2,10 @@ h1 {
     height: 20%;
     display: flex;
     justify-content: center;
-    color:seashell;
-    background-color: skyblue
+    color: darkgreen;
+    background-color: skyblue;
+    font-weight: bold;
+    text-rendering: geometricPrecision;
+    text-decoration-line: underline;
+    text-decoration-color: darkcyan
 }

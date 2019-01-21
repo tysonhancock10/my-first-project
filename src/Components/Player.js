@@ -14,7 +14,7 @@ class Player extends Component {
 
 
         }
-        this.handleUpdatePlayer= this.handleUpdatePlayer.bind(this)
+        this.handleUpdate= this.handleUpdate.bind(this)
     }
 
     handleGetPlayer() {
@@ -67,7 +67,7 @@ class Player extends Component {
             teamInput: '',
         })
     }
-    handleUpdatePlayer(data) {
+    handleUpdate(data) {
         console.log(data)
         this.setState({
             players: data
@@ -91,6 +91,7 @@ class Player extends Component {
     render() {
         const favePlayers = this.state.players.map((player) => 
             <div>
+                <div class="text">
                 <h4>{player.name}</h4>
                 <h5>{player.team}</h5>
                 <p>{player.body}</p>
@@ -100,8 +101,8 @@ class Player extends Component {
                 updatePlayer={this.handleUpdate}
                 id={player.index}
           />
-          <Delete
-                />
+          
+                </div>
             </div>
         )
       
